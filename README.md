@@ -4,4 +4,4 @@
 
 - #### [用 Redis 實現自動補齊的功能](./redis/auto-complete/note.md)
 
-- #### [跟Memory有關的一些事](./nodejs/memory/note.md)
+- #### [跟 Memory 有關的一些事](./nodejs/memory/note.md)
