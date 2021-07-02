@@ -8,7 +8,7 @@
 
 先來張官方圖
 
-![image](./phase.png)
+![phase.png](./phase.png)
 
 這張圖呈現了一個完整的 event loop，其中`timers`到`close callbacks`共有六個`phase`，每個 phase 都有獨立的 queue(FIFO)，各自負責不同的`callback`，原則上當所有 callback 執行完後，就會走到下一個 phase。以下來介紹幾個比較重要的 phase
 
@@ -19,7 +19,7 @@
 - ### poll
 
   除了一些網路相關的 I/O，大部分的 I/O callback 都在這個階段執行。每次進到這個 phase 都會以下圖的流程執行。
-  ![poll-phase-flow](./poll-phase-flow.png)
+  ![poll-phase-flow.png](./poll-phase-flow.png)
 
   除此之外每次 poll queue 被清空時，event loop 都會檢查是否有計時器到期，如果有就會回到`timers`去執行`setTimeout`跟`setInterval`的 callback。
 
@@ -28,7 +28,7 @@
 
 用 phase 來理解 event loop 雖然很清楚，但是目前為止卻還沒提到實際上最常見的異步寫法 —— `promise`，以下就換個角度來重新看看 event loop。
 
-![task](./task.jpeg)
+![task.jpeg](./task.jpeg)
 
 先介紹兩個新名詞
 

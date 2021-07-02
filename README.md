@@ -3,3 +3,5 @@
 - #### [NodeJS 的事件迴圈機制](./nodejs/event-loop/note.md)
 
 - #### [用 Redis 實現自動補齊的功能](./redis/auto-complete/note.md)
+
+- #### [跟Memory有關的一些事](./nodejs/memory/note.md)
