@@ -15,3 +15,7 @@
 ### Statistic
 
 - #### [辛普森悖論](./statistic/simpson-paradox/note.md)
+
+### TypeScript
+
+- #### [如何幫參數加上嚴格的約束(string篇)](./typescript/parameter-constraint/note.md)
