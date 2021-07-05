@@ -76,3 +76,45 @@ console.log("end");
 > setTimeout
 > setImmediate
 ```
+
+---
+
+## 補充
+
+如果使用[Elastic APM](https://www.elastic.co/apm/)來做runtime monitor，他會自動紀錄[event loop delay](https://www.elastic.co/guide/en/apm/agent/nodejs/master/metrics.html#metric-nodejs.eventloop.delay.avg.ms)，搭配適當的filter跟其他metrics，可以幫忙找出有問題的程式碼。
+
+![apm.png](./apm.png)
+
+實作的部分寫在[monitor-event-loop-delay](https://github.com/elastic/monitor-event-loop-delay)這個套件裡。
+
+主要的邏輯很簡單，透過一個`setInterval`來紀錄每次`callback`被執行的時間差。
+```js
+  enable () {
+    if (this.timer) return false
+
+    let last = process.hrtime()
+
+    this.timer = setInterval(() => {
+      const next = process.hrtime(last)
+      this.samples.push(Math.max(0, toNano(next)))
+      last = process.hrtime()
+    }, this.resolution)
+
+    this.timer.unref()
+
+    return true
+  }
+```
+
+官方有提到`resolution`的值是10ms，所以小於這個值的delay將不會被捕捉到。
+
+
+> Event loop delay is sampled every 10 milliseconds.Delays shorter than 10ms may not be observed.
+
+
+
+另外取得時間的API是使用[process.hrtime](https://nodejs.org/api/process.html#process_process_hrtime_time)，可以提供奈米級的高精度時間。
+
+> The `process.hrtime()` method returns the current high-resolution real time in a `[seconds, nanoseconds]` tuple Array, where nanoseconds is the remaining part of the real time that can't be represented in second precision.
+>
+> These times are relative to an arbitrary time in the past, and not related to the time of day and therefore not subject to clock drift. The primary use is for measuring performance between intervals.
