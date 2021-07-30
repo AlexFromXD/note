@@ -19,3 +19,5 @@
 ### TypeScript
 
 - #### [如何幫參數加上嚴格的約束(string篇)](./typescript/parameter-constraint/note.md)
+
+- #### [用decorator來限制function的呼叫次數](./typescript/decorator-once/note.md)

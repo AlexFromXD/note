@@ -24,6 +24,7 @@
   除此之外每次 poll queue 被清空時，event loop 都會檢查是否有計時器到期，如果有就會回到`timers`去執行`setTimeout`跟`setInterval`的 callback。
 
 - ### check
+
   負責執行`setImmediate`的 callback。
 
 用 phase 來理解 event loop 雖然很清楚，但是目前為止卻還沒提到實際上最常見的異步寫法 —— `promise`，以下就換個角度來重新看看 event loop。
@@ -32,8 +33,9 @@
 
 先介紹兩個新名詞
 
-- #### MacroTask —— `setTimeout`, `setInterval`, `setImmediate`, `I/O`...
-- #### MicroTask —— `process.nextTick`, `promise`, ...
+- #### MacroTask —— `setTimeout`, `setInterval`, `setImmediate`, `I/O`
+
+- #### MicroTask —— `process.nextTick`, `promise`
 
 簡單來說，各種實現異步的寫法如果不是 MacroTask 就是 MicroTask。而每執行一個 MacroTask 之後，就會把 MicroTask Queue 全部清空，才會再執行下一個 MacroTask。對應到官方的說明，如果遞迴呼叫`process.nextTick`，會讓 event loop 卡死在某一個 phase，正是因為 MicroTask 的特性造成的。
 
@@ -88,6 +90,7 @@ console.log("end");
 實作的部分寫在[monitor-event-loop-delay](https://github.com/elastic/monitor-event-loop-delay)這個套件裡。
 
 主要的邏輯很簡單，透過一個`setInterval`來紀錄每次`callback`被執行的時間差。
+
 ```js
   enable () {
     if (this.timer) return false
@@ -108,10 +111,7 @@ console.log("end");
 
 官方有提到`resolution`的值是10ms，所以小於這個值的delay將不會被捕捉到。
 
-
 > Event loop delay is sampled every 10 milliseconds.Delays shorter than 10ms may not be observed.
-
-
 
 另外取得時間的API是使用[process.hrtime](https://nodejs.org/api/process.html#process_process_hrtime_time)，可以提供奈米級的高精度時間。
 
