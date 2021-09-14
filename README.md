@@ -18,6 +18,8 @@
 
 ### TypeScript
 
-- #### [如何幫參數加上嚴格的約束(string篇)](./typescript/parameter-constraint/note.md)
+- #### [如何幫參數加上嚴格的約束(string 篇)](./typescript/parameter-constraint/note.md)
 
-- #### [用decorator來限制function的呼叫次數](./typescript/decorator-once/note.md)
+- #### [用 decorator 來限制 function 的呼叫次數](./typescript/decorator-once/note.md)
+
+- #### [NestJS 的 Inject 之謎（unresolved）](./typescript/injection-of-nest/note.md)
