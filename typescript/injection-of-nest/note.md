@@ -1,8 +1,6 @@
 一開始寫[NestJS](https://github.com/nestjs/nest) 的時候常常遇到一個問題，就是到底什麼時候需要加`@Injectable()`或`@Inject()`
 
----
-
-假設目前有個 project 如下
+假設目前有個 project 如下:
 
 ```txt
 src
@@ -121,7 +119,7 @@ bootstrap();
 TypeError: Cannot read property 'name' of undefined
 ```
 
-原因是在`pet.service.ts`裡面的`_catService`跟`_dogService`沒有注入成功，所以這兩個 property 的 value 其實是 `undefined`。要找到注入失敗的原因，可以先檢查有沒有正確地把 dependency 放進 IOC container。
+原因是在`pet.service.ts`裡面的`_catService`跟`_dogService`沒有注入成功，所以這兩個 property 的 value 其實是 `undefined`。要找到注入失敗的原因，可以先檢查有沒有正確地把 dependency 放進 `IOC container`。
 
 在`main.ts`加上幾行就可以了
 
@@ -172,3 +170,18 @@ export class PetService {
 ```
 
 > 註：兩個都加也是可以
+
+至於原因等我看完 source code 再補上...
+
+---
+
+#### 備註
+
+- 範例使用的版本為：
+
+```
+ "@nestjs/common": "^8.0.0"
+ "@nestjs/core": "^8.0.0"
+```
+
+- 想體驗`DI`但是不想使用`Nest`的話可以考慮[InversifyJS](https://github.com/inversify/InversifyJS)
