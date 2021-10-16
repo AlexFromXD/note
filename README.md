@@ -2,6 +2,10 @@
 
 ---
 
+### MySQL
+
+- #### [一次改掉整個 DB 的 character_set](./mysql/update-character-set/note.md)
+
 ### NodeJS
 
 - #### [NodeJS 的事件迴圈機制](./nodejs/event-loop/note.md)
