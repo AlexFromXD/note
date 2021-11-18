@@ -16,6 +16,10 @@
 
 - #### [用 Redis 實現自動補齊的功能](./redis/auto-complete/note.md)
 
+### Shell
+
+- #### [一次 port-forward 所有 Kubernetes svc](./shell/kubectl-port-forward/note.md)
+
 ### Statistic
 
 - #### [辛普森悖論](./statistic/simpson-paradox/note.md)
