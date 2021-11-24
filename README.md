@@ -2,6 +2,10 @@
 
 ---
 
+### Kubernetes
+
+- #### [用 IPC 做 health check](./kubernetes/ipc-health-check/note.md)
+
 ### MySQL
 
 - #### [一次改掉整個 DB 的 character_set](./mysql/update-character-set/note.md)
