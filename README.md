@@ -2,6 +2,10 @@
 
 ---
 
+### DevOps
+
+- #### [Comparing Google IAM with AWS IAM](./devops/iam-comparison/note.md)
+
 ### Kubernetes
 
 - #### [用 IPC 做 health check](./kubernetes/ipc-health-check/note.md)
