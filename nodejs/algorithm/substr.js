@@ -2,11 +2,11 @@ const { deepStrictEqual } = require("assert");
 
 /**
  * @param {string} str
- * @returns {string[]} sub strings list
+ * @returns {Set<string>} sub strings list
  */
 function substr(str) {
-  const subStrings = new Set([str, ""]);
-  let subStringLength = str.length - 1;
+  const subStrings = new Set([""]);
+  let subStringLength = str.length;
   while (subStringLength > 0) {
     for (let i = 0; i <= str.length - subStringLength; i++) {
       subStrings.add(str.slice(i, i + subStringLength));
