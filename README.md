@@ -20,6 +20,8 @@
 
 - #### [跟 Memory 有關的一些事](./nodejs/memory/note.md)
 
+- #### [sinon and prototype](./nodejs/sinon-prototype/note.md)
+
 ### Redis
 
 - #### [用 Redis 實現自動補齊的功能](./redis/auto-complete/note.md)
