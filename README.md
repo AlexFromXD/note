@@ -1,10 +1,10 @@
-### 隨便記錄一些看過的東西 or 踩過的坑
+### Design Pattern
 
----
+- #### [[Cite] What are the practical ways to implement the SRP?](https://softwareengineering.stackexchange.com/questions/158845/what-are-the-practical-ways-to-implement-the-srp)
 
-### DevOps
+### Cloud
 
-- #### [Comparing Google IAM with AWS IAM](./devops/iam-comparison/note.md)
+- #### [Comparing Google IAM with AWS IAM](./cloud/iam-comparison/note.md)
 
 ### Kubernetes
 
@@ -14,13 +14,17 @@
 
 - #### [一次改掉整個 DB 的 character_set](./mysql/update-character-set/note.md)
 
+### Network
+
+- #### [[Cite] grpc-fundamental-and-concept](https://medium.com/swlh/grpc-fundamental-and-concept-93414d7956df)
+
 ### NodeJS
 
 - #### [NodeJS 的事件迴圈機制](./nodejs/event-loop/note.md)
 
 - #### [跟 Memory 有關的一些事](./nodejs/memory/note.md)
 
-- #### [sinon and prototype](./nodejs/sinon-prototype/note.md)
+- #### [Sinon.JS and prototype](./nodejs/sinon-prototype/note.md)
 
 ### Redis
 
