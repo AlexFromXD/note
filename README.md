@@ -10,6 +10,8 @@
 
 - #### [用 IPC 做 health check](./kubernetes/ipc-health-check/note.md)
 
+- #### [[Cite] A Guide to the Kubernetes Networking Model](https://sookocheff.com/post/kubernetes/understanding-kubernetes-networking-model/#kubernetes-basic)
+
 ### MySQL
 
 - #### [一次改掉整個 DB 的 character_set](./mysql/update-character-set/note.md)
