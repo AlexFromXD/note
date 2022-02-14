@@ -19,7 +19,7 @@ collation: utf8mb4_unicode_ci
 ALTER DATABASE `your_db` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ```
 
-但如果不幸設定到 foreign key 的欄位就不會被更新。如果情況允許的話，可以先暫時把 constraint 關掉：
+但如果不幸會動到 foreign key 的欄位就不會被更新。如果情況允許的話，可以先暫時把 constraint 關掉：
 
 ```sql
 SET FOREIGN_KEY_CHECKS=0;
@@ -51,9 +51,9 @@ BEGIN
 				leave tableLoop;
 			END IF;
 			FETCH cur INTO tableName;
-      -- 可以先跑個select確定有正確抓到table
-      -- SELECT tableName;
-			SET @s = CONCAT('ALTER table ', tableName, ' CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;');
+				-- 可以先跑個select確定有正確抓到table
+				-- SELECT tableName;
+			SET @s = CONCAT('ALTER table `', tableName, '` CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;');
 			PREPARE stmt FROM @s;
 			EXECUTE stmt;
 			DEALLOCATE PREPARE stmt;
@@ -78,4 +78,4 @@ CALL updateCharSet();
   SET FOREIGN_KEY_CHECKS=1;
   ```
 
-- 請自行評估在 production 環境使用的可行性（e.g. downtime）
+- 請自行評估在 production 環境使用的可行性
