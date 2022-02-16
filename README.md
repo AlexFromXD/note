@@ -12,6 +12,8 @@
 
 - #### [[Cite] A Guide to the Kubernetes Networking Model](https://sookocheff.com/post/kubernetes/understanding-kubernetes-networking-model/#kubernetes-basic)
 
+- #### [一些 dev / debug 可能會需要的東西](./kubernetes//dev-debug-util/note.md)
+
 ### MySQL
 
 - #### [一次改掉整個 DB 的 character_set](./mysql/update-character-set/note.md)
