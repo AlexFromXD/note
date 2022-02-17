@@ -24,4 +24,8 @@
 
 > #### 如果順利解決了 ip 問題，接下來還有...
 
-to be continued...
+- [unable to mount volumes](https://github.com/kubernetes/kubernetes/issues/65500)
+
+- [kubelet OOM](https://github.com/awslabs/amazon-eks-ami/issues/318)
+
+- to be continued ...
