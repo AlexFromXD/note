@@ -6,6 +6,8 @@
 
 - #### [Comparing Google IAM with AWS IAM](./cloud/iam-comparison/note.md)
 
+- #### [用過 EKS 才知道 GKE 的好](./cloud/gke-is-better-than-eks/note.md)
+
 ### Kubernetes
 
 - #### [用 IPC 做 health check](./kubernetes/ipc-health-check/note.md)
