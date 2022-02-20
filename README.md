@@ -1,12 +1,14 @@
-### Design Pattern
-
-- #### [[Cite] What are the practical ways to implement the SRP?](https://softwareengineering.stackexchange.com/questions/158845/what-are-the-practical-ways-to-implement-the-srp)
-
 ### Cloud
 
 - #### [Comparing Google IAM with AWS IAM](./cloud/iam-comparison/note.md)
 
 - #### [用過 EKS 才知道 GKE 的好](./cloud/gke-is-better-than-eks/note.md)
+
+### Design
+
+- #### [[Cite] What are the practical ways to implement the SRP?](https://softwareengineering.stackexchange.com/questions/158845/what-are-the-practical-ways-to-implement-the-srp)
+
+- #### [[Cite] grpc-fundamental-and-concept](https://medium.com/swlh/grpc-fundamental-and-concept-93414d7956df)
 
 ### Kubernetes
 
@@ -16,13 +18,11 @@
 
 - #### [一些 dev / debug 可能會需要的東西](./kubernetes//dev-debug-util/note.md)
 
+- #### [[Cite] Allocatable memory and CPU in Kubernetes Nodes](https://learnk8s.io/allocatable-resources)
+
 ### MySQL
 
 - #### [一次改掉整個 DB 的 character_set](./mysql/update-character-set/note.md)
-
-### Network
-
-- #### [[Cite] grpc-fundamental-and-concept](https://medium.com/swlh/grpc-fundamental-and-concept-93414d7956df)
 
 ### NodeJS
 
