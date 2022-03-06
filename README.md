@@ -20,6 +20,8 @@
 
 - #### [[Cite] Allocatable memory and CPU in Kubernetes Nodes](https://learnk8s.io/allocatable-resources)
 
+- #### [[Cite] Controllers and Operators](https://octetz.com/docs/2019/2019-10-13-controllers-and-operators/)
+
 ### MySQL
 
 - #### [一次改掉整個 DB 的 character_set](./mysql/update-character-set/note.md)
