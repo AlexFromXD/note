@@ -22,6 +22,8 @@
 
 - #### [[Cite] Controllers and Operators](https://octetz.com/docs/2019/2019-10-13-controllers-and-operators/)
 
+- #### [調整 StatefuleSets storage size](./kubernetes//resize-pvc/note.md)
+
 ### MySQL
 
 - #### [一次改掉整個 DB 的 character_set](./mysql/update-character-set/note.md)
