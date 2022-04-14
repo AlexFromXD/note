@@ -4,6 +4,8 @@
 
 - #### [用過 EKS 才知道 GKE 的好](./cloud/gke-is-better-than-eks/note.md)
 
+- #### [AWS CLI 小技巧](./cloud/aws-cli/note.md)
+
 ### Design
 
 - #### [[Cite] What are the practical ways to implement the SRP?](https://softwareengineering.stackexchange.com/questions/158845/what-are-the-practical-ways-to-implement-the-srp)
