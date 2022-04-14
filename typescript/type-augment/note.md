@@ -79,8 +79,7 @@ import "@nestjs/typeorm";
 declare module "@nestjs/typeorm" {
   declare const InjectRepository: (
     entity: EntityClassOrSchema,
-    connection?: "default" | "master" | "read-replica"
-    // eslint-disable-next-line @typescript-eslint/ban-types
+    connection?: "default" | "master" | "read-replica" | "whatever-you-want"
   ) => (
     target: object,
     key: string | symbol,
