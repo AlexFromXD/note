@@ -4,7 +4,7 @@
 #!/bin/sh
 
 credential=$(aws sts get-session-token \
-    --serial-number arn:aws:iam::757713829801:mfa/alex \
+    --serial-number arn:aws:iam::<AccountId>:mfa/<UserName> \
     --token-code $1)
 
 echo $credential
