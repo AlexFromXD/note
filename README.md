@@ -12,6 +12,10 @@
 
 - #### [[Cite] grpc-fundamental-and-concept](https://medium.com/swlh/grpc-fundamental-and-concept-93414d7956df)
 
+### Go
+
+- #### [[Cite] Scheduling In Go](https://www.ardanlabs.com/blog/2018/08/scheduling-in-go-part1.html)
+
 ### Kubernetes
 
 - #### [用 IPC 做 health check](./kubernetes/ipc-health-check/note.md)
