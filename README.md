@@ -50,6 +50,8 @@
 
 - #### [一次 port-forward 所有 Kubernetes svc](./shell/kubectl-port-forward/note.md)
 
+- #### [usage of openssl](./shell//openssl/note.md)
+
 ### Statistic
 
 - #### [辛普森悖論](./statistic/simpson-paradox/note.md)
