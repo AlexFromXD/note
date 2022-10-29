@@ -1,0 +1,16 @@
+name: Bad link test
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Check href
+        run: ./.github/scripts/test.sh
+        shell: bash

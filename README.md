@@ -1,10 +1,10 @@
 ### Cloud
 
-- #### [Comparing Google IAM with AWS IAM](./cloud/iam-comparison/note.md)
+- #### [Comparing Google IAM with AWS IAM](./cloud/iam-comparison/README.md)
 
-- #### [用過 EKS 才知道 GKE 的好](./cloud/gke-is-better-than-eks/note.md)
+- #### [用過 EKS 才知道 GKE 的好](./cloud/gke-is-better-than-eks/README.md)
 
-- #### [AWS CLI 小技巧](./cloud/aws-cli/note.md)
+- #### [AWS CLI 小技巧](./cloud/aws-cli/README.md)
 
 ### Design
 
@@ -16,58 +16,60 @@
 
 - #### [[Cite] Scheduling In Go](https://www.ardanlabs.com/blog/2018/08/scheduling-in-go-part1.html)
 
+- #### []()
+
 ### Kubernetes
 
-- #### [用 IPC 做 health check](./kubernetes/ipc-health-check/note.md)
+- #### [用 IPC 做 health check](./kubernetes/ipc-health-check/README.md)
 
 - #### [[Cite] A Guide to the Kubernetes Networking Model](https://sookocheff.com/post/kubernetes/understanding-kubernetes-networking-model/#kubernetes-basic)
 
-- #### [一些 dev / debug 可能會需要的東西](./kubernetes//dev-debug-util/note.md)
+- #### [一些 dev / debug 可能會需要的東西](./kubernetes//dev-debug-util/README.md)
 
 - #### [[Cite] Allocatable memory and CPU in Kubernetes Nodes](https://learnk8s.io/allocatable-resources)
 
 - #### [[Cite] Controllers and Operators](https://octetz.com/docs/2019/2019-10-13-controllers-and-operators/)
 
-- #### [調整 StatefuleSets storage size](./kubernetes//resize-pvc/note.md)
+- #### [調整 StatefuleSets storage size](./kubernetes//resize-pvc/README.md)
 
 ### MySQL
 
-- #### [一次改掉整個 DB 的 character_set](./mysql/update-character-set/note.md)
+- #### [一次改掉整個 DB 的 character_set](./mysql/update-character-set/README.md)
 
 ### NodeJS
 
-- #### [NodeJS 的事件迴圈機制](./nodejs/event-loop/note.md)
+- #### [NodeJS 的事件迴圈機制](./nodejs/event-loop/README.md)
 
-- #### [跟 Memory 有關的一些事](./nodejs/memory/note.md)
+- #### [跟 Memory 有關的一些事](./nodejs/memory/README.md)
 
-- #### [Sinon.JS and prototype](./nodejs/sinon-prototype/note.md)
+- #### [Sinon.JS and prototype](./nodejs/sinon-prototype/README.md)
 
 ### Redis
 
-- #### [用 Redis 實現自動補齊的功能](./redis/auto-complete/note.md)
+- #### [用 Redis 實現自動補齊的功能](./redis/auto-complete/README.md)
 
 ### Shell
 
-- #### [一次 port-forward 所有 Kubernetes svc](./shell/kubectl-port-forward/note.md)
+- #### [一次 port-forward 所有 Kubernetes svc](./shell/kubectl-port-forward/README.md)
 
-- #### [usage of openssl](./shell//openssl/note.md)
+- #### [usage of openssl](./shell//openssl/README.md)
 
 ### Statistic
 
-- #### [辛普森悖論](./statistic/simpson-paradox/note.md)
+- #### [辛普森悖論](./statistic/simpson-paradox/README.md)
 
 ### TypeScript
 
-- #### [用 decorator 來限制 function 的呼叫次數](./typescript/decorator-once/note.md)
+- #### [用 decorator 來限制 function 的呼叫次數](./typescript/decorator-once/README.md)
 
-- #### [generic vs overload](./typescript/generic-vs-overload/note.md)
+- #### [generic vs overload](./typescript/generic-vs-overload/README.md)
 
-- #### [NestJS 的 Inject 之謎（unresolved）](./typescript/injection-of-nest/note.md)
+- #### [NestJS 的 Inject 之謎（unresolved）](./typescript/injection-of-nest/README.md)
 
-- #### [用 Nest 做 GraphQL Server 上傳檔案會遇到的陷阱 ](./typescript/nest-gql-upload/note.md)
+- #### [用 Nest 做 GraphQL Server 上傳檔案會遇到的陷阱 ](./typescript/nest-gql-upload/README.md)
 
-- #### [用 Nest + RabbitMQ 做個 async worker](./typescript/nest-worker/note.md)
+- #### [用 Nest + RabbitMQ 做個 async worker](./typescript/nest-worker/README.md)
 
-- #### [如何幫參數加上嚴格的約束(string 篇)](./typescript/parameter-constraint/note.md)
+- #### [如何幫參數加上嚴格的約束(string 篇)](./typescript/parameter-constraint/README.md)
 
-- #### [如何幫參數加上嚴格的約束(augment 篇)](./typescript/type-augment/note.md)
+- #### [如何幫參數加上嚴格的約束(augment 篇)](./typescript/type-augment/README.md)
