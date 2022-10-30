@@ -1,0 +1,7 @@
+int: 123
+
+str: "change value"
+
+list: 
+  - change
+  - value
