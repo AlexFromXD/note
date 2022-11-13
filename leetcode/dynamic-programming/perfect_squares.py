@@ -1,20 +1,30 @@
 # https://leetcode.com/problems/perfect-squares/
 
+from typing import List
+
+
 class Solution:
+    def get_squares_lt(self, n: int) -> List[int]:
+        return [i**2 for i in range(1, int(n**0.5)+1)]
+
     def numSquares(self, n: int) -> int:
-        squares = [i**2 for i in range(1, int(n**0.5)+1)]
-        depth, q, nq = 1, {n}, set()
-        while q:
-            for node in q:
+        squares = self.get_squares_lt(n)
+        depth = 1
+        queue = {n}
+        next_queue = set()
+        while queue:
+            for node in queue:
                 for square in squares:
                     if node == square:
                         return depth
-                    if node < square:
+                    elif node < square:
                         break
-                    nq.add(node-square)
-            q, nq, depth = nq, set(), depth+1
+                    next_queue.add(node-square)
+            queue = next_queue
+            next_queue = set()
+            depth += 1
 
 
 solution = Solution()
-assert solution.numSquares(12) == 3  # 4 + 4 + $
+assert solution.numSquares(12) == 3  # 4 + 4 + 4
 assert solution.numSquares(13) == 2  # 4 + 9
