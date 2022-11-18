@@ -11,6 +11,7 @@ for href in $hrefs; do
   
   if [ $code -ne 0 ]; 
   then
+    # https://docs.github.com/en/actions/creating-actions/setting-exit-codes-for-actions#about-exit-codes
     exit 1
   fi;
 done
