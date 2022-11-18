@@ -16,7 +16,9 @@
 
 - #### [[Cite] Scheduling In Go](https://www.ardanlabs.com/blog/2018/08/scheduling-in-go-part1.html)
 
-- #### [watch file change](./go/watch-file-change/README.md)
+- #### [go basic](./go/basic/)
+
+- #### [watch file change](./go/watch-file-change)
 
 ### Kubernetes
 
