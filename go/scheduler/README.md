@@ -29,9 +29,9 @@
   > the `Thread` has been placed on a core and is executing its machine instructions.
 
 - ### Preemptive Scheduler
-  > The scheduler is unpredictable when it comes to what Threads will be chosen to run at any given time. The physical act of swapping Threads on a core is called a `context switch`. A context switch can cost you `~12k to ~18k` instructions of latency.
+  > The scheduler is unpredictable when it comes to what Threads will be chosen to run at any given time. The physical act of swapping Threads on a core is called a `context switch`. A context switch can cost you `~12k to ~18k` instructions of latency. (it takes take between ~1000 and ~1500 nanoseconds to switch context and the hardware should be able to reasonably execute (on average) 12 instructions per nanosecond per core)
 
-## Go Core
+## Core
 
 ![go-core](./image/go-core.png)
 
@@ -52,8 +52,38 @@ A cooperating scheduler means the scheduler needs well-defined user space events
 - System calls
 - Synchronization and Orchestration
 
-## Net Poller
+## Network Poller
+
+Networking-based system calls can be processed asynchronously by many of the OSs we use today, this is accomplished by using:
+
+- kqueue (MacOS)
+- epoll (Linux)
+- iocp (Windows)
 
 ![net-poller-1](./image/net-poller-1.png)
 ![net-poller-2](./image/net-poller-2.png)
 ![net-poller-3](./image/net-poller-3.png)
+
+## Synchronous System Calls
+
+One example of a system call that can’t be made asynchronously is file-based system calls. If you are using CGO, there may be other situations where calling C functions will block the M as well.
+
+![sys-call-1](./image/sys-call-1.png)
+![sys-call-2](./image/sys-call-2.png)
+![sys-call-3](./image/sys-call-3.png)
+
+### Spinning threads
+
+- An M with a P assignment is looking for a runnable goroutine.
+- An M without a P assignment is looking for available Ps.
+- Scheduler also unparks an additional thread and spins it when it is readying a goroutine if there is an idle P and there are no other spinning threads.
+
+## Work Stealing
+
+![work-stealing-1](./image/work-stealing-1.png)
+![work-stealing-2](./image/work-stealing-2.png)
+![work-stealing-3](./image/work-stealing-3.png)
+![work-stealing-4](./image/work-stealing-4.png)
+![work-stealing-5](./image/work-stealing-5.png)
+
+Essentially, Go has turned IO/Blocking work into CPU-bound work at the OS level. Since all the context switching is happening at the application level, we don’t lose the same ~12k instructions (on average) per context switch that we were losing when using Threads. In Go, those same context switches are costing you ~200 nanoseconds or ~2.4k instructions.
