@@ -14,7 +14,7 @@
 
 ### Go
 
-- #### [[Cite] Scheduling In Go](https://www.ardanlabs.com/blog/2018/08/scheduling-in-go-part1.html)
+- #### [Scheduler](./go/scheduler/)
 
 - #### [go basic](./go/basic/)
 
