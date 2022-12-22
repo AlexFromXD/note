@@ -8,6 +8,14 @@
 
 ---
 
+## Comparison
+
+|                           |   thread   |  goroutine  |
+| :-----------------------: | :--------: | :---------: |
+|         os level          |   kernel   | user space  |
+| latency of context switch | 1 - 1.5 ms |   0.2 ms    |
+|         scheduler         | preemptive | cooperating |
+
 ## Definition
 
 - ### Program Counter (Instruction Pointer)
@@ -31,7 +39,7 @@
 - ### Preemptive Scheduler
   > The scheduler is unpredictable when it comes to what Threads will be chosen to run at any given time. The physical act of swapping Threads on a core is called a `context switch`. A context switch can cost you `~12k to ~18k` instructions of latency. (it takes take between ~1000 and ~1500 nanoseconds to switch context and the hardware should be able to reasonably execute (on average) 12 instructions per nanosecond per core)
 
-## Core
+## Concept
 
 ![go-core](./image/go-core.png)
 
@@ -78,7 +86,7 @@ One example of a system call that can’t be made asynchronously is file-based s
 - An M without a P assignment is looking for available Ps.
 - Scheduler also unparks an additional thread and spins it when it is readying a goroutine if there is an idle P and there are no other spinning threads.
 
-## Work Stealing
+## Work Stealing (Cooperating Scheduler)
 
 ![work-stealing-1](./image/work-stealing-1.png)
 ![work-stealing-2](./image/work-stealing-2.png)
@@ -87,3 +95,10 @@ One example of a system call that can’t be made asynchronously is file-based s
 ![work-stealing-5](./image/work-stealing-5.png)
 
 Essentially, Go has turned IO/Blocking work into CPU-bound work at the OS level. Since all the context switching is happening at the application level, we don’t lose the same ~12k instructions (on average) per context switch that we were losing when using Threads. In Go, those same context switches are costing you ~200 nanoseconds or ~2.4k instructions.
+
+## Practical
+
+- ### [Add Number](./code/add-number/main.go)
+- ### [Bubble Sort](./code/bubble-sort/main.go)
+
+- ### [Read File](./code/read-file/main.go)
