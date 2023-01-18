@@ -66,14 +66,14 @@
 
 - #### [用 decorator 來限制 function 的呼叫次數](./typescript/decorator-once/README.md)
 
-- #### [generic vs overload](./typescript/generic-vs-overload/README.md)
-
 - #### [NestJS 的 Inject 之謎（unresolved）](./typescript/injection-of-nest/README.md)
 
 - #### [用 Nest 做 GraphQL Server 上傳檔案會遇到的陷阱 ](./typescript/nest-gql-upload/README.md)
 
-- #### [用 Nest + RabbitMQ 做個 async worker](./typescript/nest-worker/README.md)
+- #### [用 Nest + RabbitMQ 做個 async worker](./typescript/nest-worker)
 
 - #### [如何幫參數加上嚴格的約束(string 篇)](./typescript/parameter-constraint/README.md)
 
 - #### [如何幫參數加上嚴格的約束(augment 篇)](./typescript/type-augment/README.md)
+
+- #### [[Cite] any vs unknown](https://ithelp.ithome.com.tw/articles/10223315)
