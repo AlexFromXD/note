@@ -60,3 +60,7 @@
     > 在 interface 層滿足 SRP 就好，因為我們要 [Accept interfaces, return structs](./playground/interface-strcut/main.go)
 
   - implement interface explicitly 的情況下比較容易訂出太大的 interface，或是修改 interface 為了滿足實作。
+
+## Typing
+
+- [`type declaration` is not inherit](./playground/typing/main.go)
