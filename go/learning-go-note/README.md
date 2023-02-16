@@ -64,3 +64,34 @@
 ## Typing
 
 - [`type declaration` is not inherit](./playground/typing/main.go)
+
+## Pointer
+
+- [User or \*User - Do We Need Struct Pointers Everywhere?](https://preslav.me/2023/02/06/golang-do-we-need-struct-pointers-everywhere/)
+
+  - structs are primitive (call by value)
+
+  - a pointer use 8 bytes on a 64-bit machine
+
+  - fewer heap-allocated pointers, less work for the GC.
+
+  - use pointer:
+
+    - Long-lived, single-reference “service” objects
+
+    - Value-like “models” that represent a graph structure
+
+  - Don’t justify using a pointer just to express a form of `optionality`
+
+    ```go
+    type Address struct {
+      StreetName string
+      Country string
+    }
+
+    type User struct {
+      Address \*Address // do we really gain anything from that pointer here?
+    }
+
+    u := User{Address: &Address{}} // address is not nil but not valid
+    ```
