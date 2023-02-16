@@ -20,6 +20,8 @@
 
 - #### [watch file change](./go/watch-file-change)
 
+- #### [學習手冊筆記](./go/learning-go-note/)
+
 ### Kubernetes
 
 - #### [用 IPC 做 health check](./kubernetes/ipc-health-check/README.md)
