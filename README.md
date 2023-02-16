@@ -64,6 +64,10 @@
 
 - #### [辛普森悖論](./statistic/simpson-paradox/README.md)
 
+### Terraform
+
+- #### [loop & import](./terraform/loop-and-import/)
+
 ### TypeScript
 
 - #### [用 decorator 來限制 function 的呼叫次數](./typescript/decorator-once/README.md)

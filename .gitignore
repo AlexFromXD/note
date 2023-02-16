@@ -1,7 +1,10 @@
 __pycache__
 .DS_Store
 .python-version
+.terraform
 *.pem
+*.swp
 dist
 node_modules
 package*.json
+terraform.tfstate*
