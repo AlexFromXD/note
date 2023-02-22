@@ -16,6 +16,10 @@
 
 - #### [awesome-docker-compose](./docker/awesom/)
 
+### Lab
+
+- #### [用 OpenSearch 做個搜尋引擎](./lab/search-engine)
+
 ### Go
 
 - #### [Scheduler](./go/scheduler/)
