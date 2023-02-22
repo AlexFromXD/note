@@ -72,6 +72,8 @@
 
 - #### [loop & import](./terraform/loop-and-import/)
 
+- #### [get sensitive data](./terraform/sensitive)
+
 ### TypeScript
 
 - #### [用 decorator 來限制 function 的呼叫次數](./typescript/decorator-once/README.md)
