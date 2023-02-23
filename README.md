@@ -58,6 +58,8 @@
 
 - #### [Sinon.JS and prototype](./nodejs/sinon-prototype/README.md)
 
+- #### [install module from a git repo](./nodejs/module/)
+
 ### Redis
 
 - #### [用 Redis 實現自動補齊的功能](./redis/auto-complete/README.md)
