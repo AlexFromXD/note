@@ -1,0 +1,9 @@
+# https://prometheus.io/docs/prometheus/latest/getting_started/
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: "pushgateway"
+    static_configs:
+      - targets:
+          - pushgateway:9091
