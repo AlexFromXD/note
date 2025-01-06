@@ -73,8 +73,6 @@ $ pyenv install -l # show all available versions
 $ pyenv versions # show installed versions
 ```
 
-最後談一下 ModuleNotFoundError，如果是第三方套件基本上都能靠
-
 ## Reference
 
 - https://dboyliao.medium.com/python-%E5%B0%8F%E6%8A%80%E5%B7%A7-namespace-package-9587368e5329
