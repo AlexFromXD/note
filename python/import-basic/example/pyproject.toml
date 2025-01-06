@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "example"
+version = "0.1.0"
+description = ""
+authors = ["AlexWu <alexwu@going.cloud>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+logging = "^0.4.9.6"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

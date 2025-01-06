@@ -62,6 +62,10 @@
 
 - #### [install module from a git repo](./nodejs/module/)
 
+### Python
+
+- #### [Import Basic](./python/import-basic)
+
 ### Redis
 
 - #### [用 Redis 實現自動補齊的功能](./redis/auto-complete/README.md)
