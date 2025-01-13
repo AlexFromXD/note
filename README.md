@@ -74,6 +74,8 @@
 
 - #### [email security](./security/spf-vs-dkim)
 
+- #### [sso overview](./security/sso-overview/)
+
 ### Shell
 
 - #### [一次 port-forward 所有 Kubernetes svc](./shell/kubectl-port-forward/README.md)
