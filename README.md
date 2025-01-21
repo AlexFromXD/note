@@ -64,6 +64,8 @@
 
 ### Python
 
+- #### [data schema](./python/data-schema)
+
 - #### [Import Basic](./python/import-basic)
 
 ### Redis
