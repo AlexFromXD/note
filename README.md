@@ -70,7 +70,9 @@
 
 ### Redis
 
-- #### [用 Redis 實現自動補齊的功能](./redis/auto-complete/README.md)
+- #### [用 Redis 實現自動補齊的功能](./redis/auto-complete/)
+
+- #### [redis benchmark](./redis/benchmark/)
 
 ### Security
 
