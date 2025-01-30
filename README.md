@@ -80,6 +80,8 @@
 
 - #### [sso overview](./security/sso-overview/)
 
+- #### [totp](./security/totp/)
+
 ### Shell
 
 - #### [一次 port-forward 所有 Kubernetes svc](./shell/kubectl-port-forward/README.md)
