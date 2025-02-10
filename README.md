@@ -48,6 +48,10 @@
 
 - #### [[Cite] Unthrottled: Fixing CPU Limits in the Cloud](https://engineering.indeedblog.com/blog/2019/12/unthrottled-fixing-cpu-limits-in-the-cloud/?fbclid=IwAR0zZwLllKKXpqbdWCNIFTdiSHN5pry89zSn0flSyIkY2udqbMEC7YtG4mo)
 
+### Mindset
+
+- #### [milestone - 2025](./mindset/milestone-2025/)
+
 ### MySQL
 
 - #### [一次改掉整個 DB 的 character_set](./mysql/update-character-set/README.md)
