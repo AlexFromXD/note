@@ -1,5 +1,5 @@
 services:
-  server:
+  debug:
     image: node:20-alpine
     volumes:
       - .:/app
@@ -12,3 +12,19 @@ services:
       - npm
       - run
       - debug
+    stop_grace_period: 1s
+  sls_debug:
+    image: node:20-alpine
+    volumes:
+      - .:/app
+      - ~/.serverlessrc:/root/.serverlessrc # pass serverless credential into container
+    ports:
+      - 3000:3000
+      - 19229:19229
+    entrypoint: ""
+    working_dir: /app
+    command:
+      - npm
+      - run
+      - sls:debug
+    stop_grace_period: 1s

@@ -73,3 +73,14 @@ node --inspect=0.0.0.0:9229 app.js
    ```sh
    ts-node --inspect-brk --require tsconfig-paths/register app.ts
    ```
+
+### Serverless offline
+
+serverless offline 跑在 container 時，VSCode 會吃不到斷點。
+
+- js with container ... ok
+- ts with container ... ok
+- js with sls offline ... ok
+- ts with sls offline ... ok
+- js with container & sls offline ... failed
+- ts with container & sls offline ... failed
