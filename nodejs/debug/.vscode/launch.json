@@ -1,0 +1,16 @@
+{
+  "configurations": [
+    {
+      "name": "Debug Container",
+      "type": "node",
+      "request": "attach",
+      "preLaunchTask": "container:up",
+      "postDebugTask": "container:down",
+      "sourceMaps": true,
+      "localRoot": "${workspaceFolder}",
+      "remoteRoot": "/app", // container 裡面的 source code 路徑
+      "address": "localhost",
+      "port": 9229,
+    }
+  ]
+}

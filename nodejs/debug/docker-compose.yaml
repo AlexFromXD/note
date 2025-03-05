@@ -1,0 +1,14 @@
+services:
+  server:
+    image: node:20-alpine
+    volumes:
+      - .:/app
+    ports:
+      - 8000:8000
+      - 9229:9229
+    entrypoint: ""
+    working_dir: /app
+    command:
+      - npm
+      - run
+      - debug

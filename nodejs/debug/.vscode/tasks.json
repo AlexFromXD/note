@@ -1,0 +1,15 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "container:up",
+      "type": "shell",
+      "command": "docker compose up -d", // 跑在背景才不會卡住
+    },
+    {
+      "label": "container:down",
+      "type": "shell",
+      "command": "docker compose down",
+    }
+  ]
+}

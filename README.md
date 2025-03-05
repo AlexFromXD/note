@@ -66,6 +66,8 @@
 
 - #### [install module from a git repo](./nodejs/module/)
 
+- #### [Debug with Vscode](./nodejs/debug/)
+
 ### Python
 
 - #### [data schema](./python/data-schema)
