@@ -1,0 +1,20 @@
+{
+  "name": "debug",
+  "version": "1.0.0",
+  "description": "nodejs debug",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "debug": "node --enable-source-maps --inspect=0.0.0.0:9229 ./dist/server.js",
+    "sls:debug": "node --enable-source-maps --inspect=0.0.0.0:19229 ./node_modules/.bin/serverless offline --host 0.0.0.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "serverless": "^4.7.0",
+    "serverless-offline": "^14.4.0",
+    "tsc": "^2.0.4",
+    "typescript": "^5.8.2"
+  }
+}
