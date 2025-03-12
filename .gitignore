@@ -7,6 +7,5 @@ __pycache__
 *.swp
 dist
 node_modules
-package*.json
 terraform.tfstate*
 .venv

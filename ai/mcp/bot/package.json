@@ -1,0 +1,25 @@
+{
+  "name": "mcp",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node bot.ts",
+    "start:server": "ts-node server.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@aws-sdk/client-bedrock-runtime": "^3.758.0",
+    "@modelcontextprotocol/sdk": "^1.7.0",
+    "readline-sync": "^1.4.10",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@types/readline-sync": "^1.4.8",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.2"
+  }
+}
