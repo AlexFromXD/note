@@ -1,3 +1,7 @@
+### AI
+
+- #### [MCP Hello World](./ai/mcp/)
+
 ### Cloud
 
 - #### [Comparing Google IAM with AWS IAM](./cloud/iam-comparison/)
