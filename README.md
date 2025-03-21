@@ -12,6 +12,8 @@
 
 - #### [AWS DAS Decryption](./cloud/aws-das/)
 
+- #### [lambda 101](./cloud/lambda-101/)
+
 ### Design
 
 - #### [[Cite] What are the practical ways to implement the SRP?](https://softwareengineering.stackexchange.com/questions/158845/what-are-the-practical-ways-to-implement-the-srp)
