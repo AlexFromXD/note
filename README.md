@@ -14,6 +14,8 @@
 
 - #### [lambda 101](./cloud/lambda-101/)
 
+- #### [LiteHub - serverless local dev tool](./cloud/sls-dev/)
+
 ### Design
 
 - #### [[Cite] What are the practical ways to implement the SRP?](https://softwareengineering.stackexchange.com/questions/158845/what-are-the-practical-ways-to-implement-the-srp)
