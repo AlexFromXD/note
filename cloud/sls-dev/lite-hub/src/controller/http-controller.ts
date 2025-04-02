@@ -25,7 +25,6 @@ export class HttpController implements Controller {
     this._app
       .use(bodyParser.json())
       .use(bodyParser.text({ type: "*/*" }))
-      .post("/@connections/:connectionId", (req, res) => {})
       .all("*", async (req, res) => {
         const path = req.path;
         if (this._ignoredPaths.includes(path)) {

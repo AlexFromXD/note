@@ -44,6 +44,6 @@ services:
       - 3002:3002
     environment:
       - FUNCTION_ENDPOINT=ws=http://ws:8080,http=http://http:8080,worker=http://worker:8080
-      - PATH_MAPPING=/http=http,/ws=ws
+      - PATH_MAPPING=/http=http
       - WS_FUNCTION=ws
     stop_grace_period: 1s
