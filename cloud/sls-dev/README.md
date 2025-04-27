@@ -1,3 +1,7 @@
+[Update] 新的紀錄都放在 https://github.com/AlexFromXD/lite-hub。
+
+---
+
 [Serverless](https://www.serverless.com/) or [LocalStack](https://www.localstack.cloud/) 免費版不合用時都會被 $$ 綁架，自己做一個簡單的 api gateway 就可以解決這個問題。
 
 ## LiteHub
