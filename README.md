@@ -127,3 +127,5 @@
 - #### [如何幫參數加上嚴格的約束(augment 篇)](./typescript/type-augment/README.md)
 
 - #### [[Cite] any vs unknown](https://ithelp.ithome.com.tw/articles/10223315)
+
+- #### [Flow-Driven State Machine](./typescript/state-machine/)
