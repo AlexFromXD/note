@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  router1:
+    image: frrouting/frr:latest
+    container_name: router1
+    privileged: true
+    networks:
+      net-bgp:
+        ipv4_address: 172.31.253.8
+    volumes:
+      - ./router/frr1:/etc/frr
+    tty: true
+
+  router2:
+    image: frrouting/frr:latest
+    container_name: router2
+    privileged: true
+    networks:
+      net-bgp:
+        ipv4_address: 172.31.253.9
+    volumes:
+      - ./router/frr2:/etc/frr
+    tty: true
+
+networks:
+  net-bgp:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.31.253.0/28
+
+
