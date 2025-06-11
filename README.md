@@ -2,6 +2,8 @@
 
 - #### [MCP Hello World](./ai/mcp/)
 
+- #### [Vector Search with pgvector](./ai/pgvector/)
+
 ### Cloud
 
 - #### [Comparing Google IAM with AWS IAM](./cloud/iam-comparison/)
