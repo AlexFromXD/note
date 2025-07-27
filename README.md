@@ -16,6 +16,8 @@
 
 - #### [AWS Network Overview](./cloud/aws-network-overview/)
 
+- #### [AWS KMS](./cloud/aws-kms/)
+
 - #### [lambda 101](./cloud/lambda-101/)
 
 - #### [LiteHub - serverless local dev tool](./cloud/sls-dev/)
