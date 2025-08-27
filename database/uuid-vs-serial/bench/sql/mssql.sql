@@ -1,0 +1,16 @@
+IF OBJECT_ID('dbo.t_identity', 'U') IS NOT NULL DROP TABLE dbo.t_identity;
+IF OBJECT_ID('dbo.t_guid_v4', 'U') IS NOT NULL DROP TABLE dbo.t_guid_v4;
+IF OBJECT_ID('dbo.t_guid_v7', 'U') IS NOT NULL DROP TABLE dbo.t_guid_v7;
+CREATE TABLE dbo.t_identity (
+  id BIGINT IDENTITY(1, 1) PRIMARY KEY CLUSTERED WITH (OPTIMIZE_FOR_SEQUENTIAL_KEY = ON),
+  payload NVARCHAR(100)
+);
+-- clustered GUID（示範：可自行改為 NONCLUSTERED 再設一個窄 clustered）
+CREATE TABLE dbo.t_guid_v4 (
+  id UNIQUEIDENTIFIER NOT NULL PRIMARY KEY CLUSTERED,
+  payload NVARCHAR(100)
+);
+CREATE TABLE dbo.t_guid_v7 (
+  id UNIQUEIDENTIFIER NOT NULL PRIMARY KEY CLUSTERED,
+  payload NVARCHAR(100)
+);

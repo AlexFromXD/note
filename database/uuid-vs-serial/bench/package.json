@@ -1,0 +1,26 @@
+{
+  "name": "uuid-vs-serial-benchmark",
+  "version": "1.0.0",
+  "description": "數據庫主鍵選擇基準測試：自增整數 vs UUIDv4 vs UUIDv7",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "node src/index.js --rows=10000 --batch=500 --runs=1 --warmup=500",
+    "test:local": "docker compose --profile db up -d && PG_HOST=localhost MYSQL_HOST=localhost MSSQL_HOST=localhost PG_PORT=5432 MYSQL_PORT=3306 MSSQL_PORT=1433 MSSQL_PASSWORD=P@ssw0rd12345 node src/index.js --rows=10000 --batch=500 --runs=1 --warmup=500",
+    "open-report": "node open-report.js"
+  },
+  "keywords": [
+    "benchmark",
+    "database",
+    "uuid",
+    "sequential",
+    "primary-key"
+  ],
+  "dependencies": {
+    "mssql": "^11.0.1",
+    "mysql2": "^3.14.3",
+    "pg": "^8.16.3",
+    "uuid": "^11.1.0"
+  }
+}

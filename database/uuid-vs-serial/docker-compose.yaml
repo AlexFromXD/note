@@ -1,0 +1,41 @@
+services:
+  pg:
+    image: postgres:16
+    profiles: ["db", "all"]
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: benchmark
+    ports: ["5432:5432"]
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+  mysql:
+    image: mysql:8.4
+    profiles: ["db", "all"]
+    # MySQL 8.4 預設已使用 mysql_native_password，無需額外指定
+    # 若需自訂，請改用 my.cnf 設定檔
+    # command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: benchmark
+    ports: ["3306:3306"]
+    volumes:
+      - mysql_data:/var/lib/mysql
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    profiles: ["db", "all"]
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "P@ssw0rd12345"
+    ports: ["1433:1433"]
+  bench:
+    image: node:20
+    profiles: ["all"]
+    working_dir: /app
+    depends_on: [pg, mysql, mssql]
+    volumes: ["./bench:/app"]
+    command: >
+      bash -lc " npm i && npm start"
+
+volumes:
+  mysql_data:
+  pg_data:
