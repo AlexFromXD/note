@@ -1,0 +1,10 @@
+DROP TABLE IF EXISTS t_identity;
+DROP TABLE IF EXISTS t_uuidv4;
+DROP TABLE IF EXISTS t_uuidv7;
+CREATE TABLE t_identity (
+  id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  payload TEXT
+);
+-- uuid 原生型別（16 bytes）
+CREATE TABLE t_uuidv4 (id UUID PRIMARY KEY, payload TEXT);
+CREATE TABLE t_uuidv7 (id UUID PRIMARY KEY, payload TEXT);

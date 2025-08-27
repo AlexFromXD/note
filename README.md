@@ -34,6 +34,10 @@
 
 - #### [[Cite] grpc-fundamental-and-concept](https://medium.com/swlh/grpc-fundamental-and-concept-93414d7956df)
 
+### Database
+
+- #### [Primary key 效能分析： UUID vs Serial](./database/uuid-vs-serial/)
+
 ### Docker
 
 - #### [awesome-docker-compose](./docker/awesom/)
