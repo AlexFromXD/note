@@ -130,6 +130,8 @@
 
 ### TypeScript
 
+- #### [async-hook-trace](./typescript/async-hook-trace/)
+
 - #### [用 decorator 來限制 function 的呼叫次數](./typescript/decorator-once/README.md)
 
 - #### [NestJS 的 Inject 之謎（unresolved）](./typescript/injection-of-nest/README.md)
