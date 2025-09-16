@@ -1,0 +1,57 @@
+services:
+ elasticsearch:
+   image: docker.elastic.co/elasticsearch/elasticsearch:8.19.3
+   container_name: elasticsearch
+   restart: always
+   volumes:
+   - elastic_data:/usr/share/elasticsearch/data/
+   environment:
+     ES_JAVA_OPTS: "-Xmx256m -Xms256m"
+     discovery.type: single-node
+     xpack.security.enabled: false
+     xpack.security.http.ssl.enabled: false
+     xpack.security.transport.ssl.enabled: false
+   ports:
+   - '9200:9200'
+   - '9300:9300'
+
+ kibana:
+   image: docker.elastic.co/kibana/kibana:8.19.3
+   container_name: kibana
+   restart: always
+   ports:
+   - '5601:5601'
+   environment:
+     - ELASTICSEARCH_URL=http://elasticsearch:9200
+   depends_on:
+     - elasticsearch
+
+ apm-server:
+  image: docker.elastic.co/apm/apm-server:8.19.3
+  container_name: apm-server
+  environment:
+    - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+    - KIBANA_HOST=http://kibana:5601
+  ports:
+    - 8200:8200
+  depends_on:
+    - elasticsearch
+    - kibana
+  
+ pgvector:
+  image: pgvector/pgvector:pg16
+  restart: always
+  environment:
+    PGUSER: postgres
+    POSTGRES_PASSWORD: postgres
+    POSTGRES_DB: postgres
+    PGDATA: /var/lib/postgresql/data/pgdata
+  volumes:
+    - pg_data:/var/lib/postgresql/data
+    - ./demo-server/init.sql:/docker-entrypoint-initdb.d/init.sql  # this would be run when the container is created
+  ports:
+    - 5432:5432
+
+volumes:
+ elastic_data: {}
+ pg_data: {}
