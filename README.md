@@ -40,7 +40,7 @@
 
 ### Docker
 
-- #### [awesome-docker-compose](./docker/awesom/)
+- #### [awesome-docker-compose](./docker/awesome/)
 
 ### Lab
 
