@@ -1,5 +1,7 @@
 ### AI
 
+- #### [Context Engineering](./ai/context-engineering/)
+
 - #### [MCP Hello World](./ai/mcp/)
 
 - #### [Vector Search with pgvector](./ai/pgvector/)
