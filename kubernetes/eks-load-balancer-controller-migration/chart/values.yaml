@@ -1,0 +1,93 @@
+loadBalancerDnsName: lb-migration-lab-1234567890.us-west-2.elb.amazonaws.com
+
+ingress-nginx:
+  # https://github.com/kubernetes/ingress-nginx/blob/helm-chart-4.9.0/charts/ingress-nginx/values.yaml
+  controller:
+    service:
+      enabled: true
+      enableHttp: false
+      enableHttps: true
+      # https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.6/guide/service/annotations/
+      annotations:
+        ################################################################################
+        service.beta.kubernetes.io/aws-load-balancer-name: lb-migration-lab
+        service.beta.kubernetes.io/aws-load-balancer-subnets: subnet-053cf7879a352d090,subnet-04abc2af6e3cfcf07
+        ################################################################################
+        service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
+        service.beta.kubernetes.io/aws-load-balancer-type: external
+        service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: ip
+        service.beta.kubernetes.io/aws-load-balancer-connection-idle-timeout: "60"
+        service.beta.kubernetes.io/aws-load-balancer-backend-protocol: http
+        service.beta.kubernetes.io/aws-load-balancer-target-group-attributes: preserve_client_ip.enabled=true
+        service.beta.kubernetes.io/load-balancer-source-ranges: 0.0.0.0/0
+        service.beta.kubernetes.io/aws-load-balancer-attributes: deletion_protection.enabled=true
+      type: LoadBalancer
+      external:
+        enabled: true
+      # to get real client ip
+      externalTrafficPolicy: Local
+      targetPorts:
+        # https://stackoverflow.com/questions/70733110/kubernetes-ingress-controller-400-bad-request-plain-http-request-sent-to-http
+        https: http
+        http: http
+    # https://github.com/kubernetes/ingress-nginx/tree/main/deploy/grafana/dashboards
+
+    name: lb-migration
+    containerName: nginx
+    # force http requests become https requests
+    addHeaders:
+      Content-Security-Policy: upgrade-insecure-requests
+    allowSnippetAnnotations: true
+    # 允許使用 server-snippet 註解
+    enableSnippetDirectives: true
+    config:
+      allow-snippet-annotations: "true"
+      annotations-risk-level: Critical
+    ingressClassByName: true
+    ingressClassResource:
+      name: lb-migration
+      enabled: true
+      default: false
+      controllerValue: "lb-migration/ingress-nginx"
+    ingressClass: lb-migration
+    kind: Deployment
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+            - matchExpressions:
+                - key: usage
+                  operator: In
+                  values:
+                    - system
+      podAntiAffinity:
+        preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 100
+            podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                  - key: app.kubernetes.io/name
+                    operator: In
+                    values:
+                      - ingress-nginx
+              topologyKey: kubernetes.io/hostname
+    tolerations:
+      - key: SystemOnly
+        operator: Exists
+
+    metrics:
+      enabled: true
+      service:
+        annotations:
+          prometheus.io/scrape: "true"
+          prometheus.io/port: "10254"
+      serviceMonitor:
+        # install CRD monitoring.coreos first then enable service monitor
+        enabled: false
+        additionalLabels:
+          release: "kube-prometheus-stack"
+
+  serviceAccount:
+    create: true
+    name: ingress-nginx
+    automountServiceAccountToken: true
