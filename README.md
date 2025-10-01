@@ -66,6 +66,8 @@
 
 - #### [一些 dev / debug 可能會需要的東西](./kubernetes//dev-debug-util/README.md)
 
+- #### [EKS Load Balancer Controller Migration](./kubernetes/eks-load-balancer-controller-migration/)
+
 - #### [[Cite] Allocatable memory and CPU in Kubernetes Nodes](https://learnk8s.io/allocatable-resources)
 
 - #### [[Cite] Controllers and Operators](https://octetz.com/docs/2019/2019-10-13-controllers-and-operators/)

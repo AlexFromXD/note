@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: mock-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      add_header Content-Type text/plain;
+      return 200 "This is a mock response.\n";
+spec:
+  ingressClassName: lb-migration
+  rules:
+    - host: {{ .Values.loadBalancerDnsName }}
+      http:
+        paths:
+          - path: /mock
+            pathType: Prefix
+            backend:
+              service:
+                name: default-backend-service # A dummy service, not actually used for /mock
+                port:
+                  number: 80
