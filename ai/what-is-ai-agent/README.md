@@ -15,8 +15,8 @@
 
 ## StreamBench
 
-模型有沒有辦法自主學習呢？
+模型有沒有辦法自主學習呢？如果提供一個「記憶模組」讓模型將處理過的問題記錄下來，後續透過 RAG 的方式，其成效顯著高於隨機抽選問題做 `few-shot`，或甚至不給範例的 `zero-shot`。至於 MAM (Multi-Agentic-Memory) 之所以會有最好的表現，是因為它讓多個具不同特性的 Agent 共同參與學習，每個 Agent 在輪流作答中貢獻各自的成功案例，而這些案例會被存入共享記憶庫中。當記憶逐漸豐富後，後來的 Agent 在推理時能引用更多多樣且高品質的範例，形成一種「群體智慧式的持續學習」。這種設計不僅避免了單一模型侷限，也兼顧了多樣性與穩定性，使得 MAM-StreamICL 在長期表現上遠超其他基線模型。
 
-> Overview of StreamBench, illustrating the continuous improvement process of language agents in streaming. [Ref](https://github.com/stream-bench/stream-bench)
+> Overview of StreamBench, illustrating the continuous improvement process of language agents in streaming. [Ref..](https://github.com/stream-bench/stream-bench)
 
 ![StreamBench](./img/Stream-bench.png)
