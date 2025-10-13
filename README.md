@@ -6,6 +6,8 @@
 
 - #### [Vector Search with pgvector](./ai/pgvector/)
 
+- #### [What is AI Agent](./ai/what-is-ai-agent/)
+
 ### Cloud
 
 - #### [Comparing Google IAM with AWS IAM](./cloud/iam-comparison/)
