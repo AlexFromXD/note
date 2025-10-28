@@ -62,6 +62,8 @@
 
 ### Kubernetes
 
+- #### [Admission Controller](./kubernetes/admission-controller/)
+
 - #### [用 IPC 做 health check](./kubernetes/ipc-health-check/README.md)
 
 - #### [[Cite] A Guide to the Kubernetes Networking Model](https://sookocheff.com/post/kubernetes/understanding-kubernetes-networking-model/#kubernetes-basic)

@@ -1,0 +1,49 @@
+apiVersion: admissionregistration.k8s.io/v1
+kind: MutatingWebhookConfiguration
+metadata:
+  name: ndots-webhook.k8s.io
+webhooks:
+  - name: ndots.webhook.k8s.io
+    admissionReviewVersions: ["v1"]
+    sideEffects: None
+    failurePolicy: Fail
+    clientConfig:
+      service:
+        name: ndots-webhook-svc
+        namespace: kube-system
+        path: /mutate
+      caBundle: ""
+    rules:
+      - apiGroups: [""]
+        apiVersions: ["v1"]
+        resources: ["pods"]
+        operations: ["CREATE"]
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: ndots-webhook
+  namespace: kube-system
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: ndots-webhook-role
+  namespace: kube-system
+rules:
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["get", "list", "watch"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: ndots-webhook-rolebinding
+  namespace: kube-system
+subjects:
+  - kind: ServiceAccount
+    name: ndots-webhook
+roleRef:
+  kind: Role
+  name: ndots-webhook-role
+  apiGroup: rbac.authorization.k8s.io
