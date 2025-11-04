@@ -1,0 +1,128 @@
+# https://github.com/prometheus-community/helm-charts/tree/kube-prometheus-stack-77.6.1/charts/kube-prometheus-stack
+kube-prometheus-stack:
+  # https://github.com/prometheus-community/helm-charts/issues/3368
+  defaultRules:
+    rules:
+      kubeControllerManager: false
+      kubeSchedulerAlerting: false
+      kubeSchedulerRecording: false
+
+  # disable component scarping kube controller manager
+  kubeControllerManager:
+    enabled: false
+
+  # disable component scarping kube scheduler
+  kubeScheduler:
+    enabled: false
+
+  # https://github.com/prometheus-community/helm-charts/blob/1ff5e72a287484ae817c234ab2623cb2b2f91eb5/charts/kube-prometheus-stack/values.yaml#L2470
+  prometheus:
+    prometheusSpec:
+      enableRemoteWriteReceiver: true
+      retention: 14d
+      # https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/high-availability.md#prometheus
+      replicas: 1
+      storageSpec:
+        volumeClaimTemplate:
+          spec:
+            storageClassName: gp2
+            resources:
+              requests:
+                storage: 20Gi
+      resources:
+        requests:
+          cpu: 500m
+          memory: 2Gi
+        limits:
+          memory: 2Gi
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: usage
+                    operator: In
+                    values:
+                      - general
+    service:
+      sessionAffinity: ClientIP
+
+  prometheusOperator:
+    nodeSelector:
+      usage: general
+    resources:
+      requests:
+        cpu: 10m
+        memory: 100Mi
+      limits:
+        memory: 100Mi
+
+  alertmanager:
+    alertmanagerSpec:
+      resources:
+        requests:
+          cpu: 10m
+          memory: 100Mi
+        limits:
+          memory: 100Mi
+      nodeSelector:
+        usage: general
+    # https://prometheus.io/docs/alerting/configuration/#configuration-file
+    config:
+      receivers:
+        - name: "null"
+        - name: "sns"
+          sns_configs:
+            - topic_arn: arn:aws:sns:us-east-1:123456789012:EKSAlarm
+              subject: "{{ .CommonLabels.alertname }} ({{ .Status | toUpper }})"
+
+      route:
+        receiver: "null"
+        group_by: ["namespace", "alertname"]
+        group_wait: 1m
+        group_interval: 15m
+        repeat_interval: 12h
+        routes:
+          - receiver: "sns"
+            matchers:
+              - alertname = "AlarmTest" # see: README.md
+          - receiver: "sns"
+            matchers:
+              - severity =~ "warning|error|critical"
+
+      inhibit_rules:
+        - source_matchers:
+            - severity = "critical"
+          target_matchers:
+            - severity =~ "warning|error"
+          equal:
+            - namespace
+        - source_matchers:
+            - severity = "error"
+          target_matchers:
+            - severity =~ "warning"
+          equal:
+            - namespace
+
+    serviceAccount:
+      annotations:
+        eks.amazonaws.com/role-arn: arn:aws:iam::123456789012:role/EKSAlertManager
+
+  # https://github.com/grafana/helm-charts/blob/grafana-6.60.6/charts/grafana/values.yaml
+  grafana:
+    nodeSelector:
+      usage: general
+
+    resources:
+      requests:
+        cpu: 20m
+        memory: 250Mi
+      limits:
+        memory: 250Mi
+
+    persistence:
+      enabled: true
+      storageClassName: gp2
+      accessModes:
+        - ReadWriteOnce
+      size: 1Gi
