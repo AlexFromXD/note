@@ -1,0 +1,18 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: fake-alarm-rule
+  namespace: kube-system
+  labels:
+    release: prometheus # for prometheus to pick up the rule
+spec:
+  groups:
+    - name: fake_alarm_group
+      rules:
+        - alert: FakeAlarmHigh
+          expr: fake_alarm > 0
+          for: 30s
+          labels:
+            severity: warning
+          annotations:
+            summary: "fake_alarm triggered more than once in 30s"
