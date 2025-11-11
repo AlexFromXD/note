@@ -1,0 +1,21 @@
+FROM node:24-alpine AS pnpm
+
+# 安裝 pnpm
+RUN corepack enable && corepack prepare pnpm@10.11.0 --activate
+
+
+FROM pnpm
+
+# 建立工作目錄
+WORKDIR /app
+
+# 複製並安裝依賴
+COPY ./pnpm-lock.yaml ./package.json ./
+
+RUN pnpm install
+
+# Hot reload 時需要綁定 0.0.0.0
+ENV HOST=0.0.0.0
+
+# 啟動開發模式
+CMD ["pnpm", "dev"]

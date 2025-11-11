@@ -1,0 +1,4 @@
+**/*.yaml
+.gitlab/
+dist/
+src/public/*
