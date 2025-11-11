@@ -1,31 +1,24 @@
-import { Outlet } from 'react-router-dom'
+import { NavPanel } from "./NavPanel"
 
-interface BasicLayoutProps {
-  sidebar?: React.ReactNode
+type BasicLayoutProps = { 
+  contentPanel: React.ReactNode
+  mainPanel: React.ReactNode
 }
 
-
-// ┌─────────────────────────────────────┐
-// │ [sidebar] │     [Outlet]            │
-// │   252px   │                         │
-// │           │                         │
-// │           │                         │
-// │           │                         │
-// │           │                         │
-// │           │                         │
-// └─────────────────────────────────────┘
-function BasicLayout({ sidebar }: BasicLayoutProps) {
+export function BasicLayout({ contentPanel, mainPanel }: BasicLayoutProps) {
   return (
-    <div className="flex h-screen bg-gray-100">
-      <aside className="h-screen w-[252px] flex-shrink-0 overflow-y-auto bg-gray-100">
-        {sidebar}
+    <div className="flex h-screen w-screen bg-[#1a1d21] text-gray-200">
+      <aside className="w-[72px] flex-shrink-0 border-r border-gray-800 bg-[#1a1d21]">
+        <NavPanel />
       </aside>
-      <main className="mt-4 mr-4 mb-4 ml-2 flex-1 overflow-y-auto rounded-2xl bg-white">
-        {/* Outlet 是 nested route 當中用來顯示子路由內容的元件 */}
-        <Outlet />
+
+      <section className="w-[260px] flex-shrink-0 border-r border-gray-800 bg-[#222529]">
+        {contentPanel ?? <div className="p-4 text-sm text-gray-500">todo: chat list</div>}
+      </section>
+
+      <main className="flex-1 bg-[#1a1d21]">
+        {mainPanel ?? <div className="p-4 text-sm text-gray-500">todo: chat window</div>}
       </main>
     </div>
   )
 }
-
-export default BasicLayout

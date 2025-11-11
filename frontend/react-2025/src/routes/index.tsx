@@ -1,41 +1,87 @@
-import BasicLayout from '@/layouts/BasicLayout'
-import { lazy, Suspense } from 'react'
-import { createBrowserRouter, Navigate } from 'react-router-dom'
 
-// ESM 的 import 本身也會回傳 Promise
-// 不過 lazy 會偵測當元件要被渲染時 `throw Promise` https://www.reddit.com/r/reactjs/comments/1f8z0v0/suspense_why_throw_a_promise/
-// 就能搭配 Suspense 顯示 fallback UI
-const ChatPage = lazy(() => import('@/pages/Chat'))
-const SettingsPage = lazy(() => import('@/pages/SettingsPage'))
+import { BasicLayout } from "@/layouts/BasicLayout"
+import { ContentPanel } from '@/layouts/ContentPanel'
+import { MainPanel } from '@/layouts/MainPanel'
+import { createBrowserRouter, Navigate } from "react-router-dom"
+import { DMContentPanel } from "../features/dm/components/ContentPanel"
+import { DMMainPanel } from "../features/dm/components/MainPanel"
+import { ProtectedDMRoute } from "../features/dm/components/ProtectedDMRoute"
 
-const router = createBrowserRouter([
+export const router = createBrowserRouter([
   {
-    // TODO: implement the sidebar
-    element: <BasicLayout />,
-    children: [
-      {
-        index: true, // index = "/", redirect from "/" to "/chat"
-        element: <Navigate to="/chat" replace />,
-      },
-      {
-        path: '/chat',
-        element: (
-          // Suspense: 等待 component 當中的 promise 都 resolve 之前，先顯示一個 fallback（例如 loading 畫面）
-          <Suspense fallback={<div>Loading...</div>}>
-            <ChatPage />
-          </Suspense>
-        ),
-      },
-      {
-        path: '/settings',
-        element: (
-          <Suspense fallback={<div>Loading...</div>}>
-            <SettingsPage />
-          </Suspense>
-        ),
-      },
-    ],
+    path: "/",
+    element: <Navigate to="/home" replace />,
   },
+  {
+    path: "/home",
+    element: (
+      <BasicLayout
+        contentPanel={<ContentPanel feature='Home' />}
+        mainPanel={<MainPanel feature='Home' />}
+      />
+    ),
+  },
+  {
+    path: "/home/*",
+    element: (
+      <BasicLayout
+        contentPanel={<ContentPanel feature='Home' />}
+        mainPanel={<MainPanel feature='Home' />}
+      />
+    ),
+  },
+  {
+    path: "/dm",
+    element: (
+      <BasicLayout
+        contentPanel={<DMContentPanel />}
+        mainPanel={<DMMainPanel/>}
+      />
+    ),
+  },
+  {
+    path: "/dm/:id",
+    element: <ProtectedDMRoute />,
+  },
+  {
+    path: "/activity/*",
+    element: (
+      <BasicLayout
+        contentPanel={<ContentPanel feature="Activity" />}
+        mainPanel={<MainPanel feature="Activity"/>}
+      />
+    ),
+  },
+  {
+    path: "/file/*",
+    element: (
+      <BasicLayout
+        contentPanel={<ContentPanel feature="File" />}
+        mainPanel={<MainPanel feature="File"/>}
+      />
+    ),
+  },
+    {
+    path: "/later/*",
+    element: (
+      <BasicLayout
+        contentPanel={<ContentPanel feature="Later" />}
+        mainPanel={<MainPanel feature="Later"/>}
+      />
+    ),
+  },
+      {
+    path: "/tool/*",
+    element: (
+      <BasicLayout
+        contentPanel={<ContentPanel feature="Tool" />}
+        mainPanel={<MainPanel feature="Tool"/>}
+      />
+    ),
+  },
+  {
+    path: "*",
+    element: <Navigate to="/home" replace />,
+  }
 ])
-
 export default router

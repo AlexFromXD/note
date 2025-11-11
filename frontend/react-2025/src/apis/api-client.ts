@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { ensureUserId } from '../lib/userIdentity'
 
 const axiosInstance = axios.create({
   baseURL: import.meta.env.VITE_API_URL || `${window.location.origin}/api`,
@@ -6,6 +7,8 @@ const axiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use(
   (config) => {
+    const userId = ensureUserId()
+    config.headers['x-user-id'] = userId
     config.withCredentials = true
     return config
   },
