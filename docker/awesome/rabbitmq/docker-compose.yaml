@@ -1,0 +1,80 @@
+x-common-env: &common-env
+  RABBITMQ_DEFAULT_USER: admin
+  RABBITMQ_DEFAULT_PASS: admin
+  RABBITMQ_ERLANG_COOKIE: rabbitmq-cluster-cookie  
+  RABBITMQ_CLUSTER_DISCOVERY_CLASSNAME: rabbitmq_peer_discovery_classic_config
+  RABBITMQ_CLUSTER_NODES.1: rabbit@rabbitmq-1
+  RABBITMQ_CLUSTER_NODES.2: rabbit@rabbitmq-2
+  RABBITMQ_CLUSTER_NODES.3: rabbit@rabbitmq-3
+  RABBITMQ_CLUSTER_PARTITION_HANDLING: autoheal
+  
+networks:
+  rabbitmq_cluster:
+    driver: bridge
+
+volumes:
+  rabbitmq1_data:
+  rabbitmq2_data:
+  rabbitmq3_data:
+
+services:
+  rabbitmq-1:
+    image: rabbitmq:4.2-management
+    hostname: rabbitmq-1
+    container_name: rabbitmq-1
+    environment:
+      <<: *common-env
+      RABBITMQ_NODENAME: rabbit@rabbitmq-1
+
+    networks:
+      - rabbitmq_cluster
+
+    volumes:
+      - rabbitmq1_data:/var/lib/rabbitmq
+      - ./config/enabled_plugins:/etc/rabbitmq/enabled_plugins
+
+    ports:
+      - "5671:5672"
+      - "15671:15672"
+
+  rabbitmq-2:
+    image: rabbitmq:4.2-management
+    hostname: rabbitmq-2
+    container_name: rabbitmq-2
+    depends_on:
+      - rabbitmq-1
+    environment:
+      <<: *common-env
+      RABBITMQ_NODENAME: rabbit@rabbitmq-2
+
+    networks:
+      - rabbitmq_cluster
+
+    volumes:
+      - rabbitmq2_data:/var/lib/rabbitmq
+      - ./config/enabled_plugins:/etc/rabbitmq/enabled_plugins
+
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+  rabbitmq-3:
+    image: rabbitmq:4.2-management
+    hostname: rabbitmq-3
+    container_name: rabbitmq-3
+    depends_on:
+      - rabbitmq-1
+    environment:
+      <<: *common-env
+      RABBITMQ_NODENAME: rabbit@rabbitmq-3
+
+    networks:
+      - rabbitmq_cluster
+
+    volumes:
+      - rabbitmq3_data:/var/lib/rabbitmq
+      - ./config/enabled_plugins:/etc/rabbitmq/enabled_plugins
+
+    ports:
+      - "5673:5672"
+      - "15673:15672"
